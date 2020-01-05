@@ -1,8 +1,3 @@
-#!/usr/bin/env bash
-
-## Uncomment to disable git info
-#POWERLINE_GIT=0
-
 __powerline() {
     # Colorscheme
     readonly RESET='\[\033[m\]'
@@ -27,8 +22,7 @@ __powerline() {
     fi
 
     __git_info() { 
-        [[ $POWERLINE_GIT = 0 ]] && return # disabled
-        hash git 2>/dev/null || return # git not found
+        [[ $POWERLINE_GIT -ne 1 ]] && return # disabled
         local git_eng="env LANG=C git"   # force git output in English to make our work easier
 
         # get current branch name
