@@ -5,8 +5,8 @@ height = 34
 
 enable-ipc = true
 
-background = #00000000
-foreground = #ccffffff
+background = #212121
+foreground = #fafafa
 
 line-color = ${bar/bottom.background}
 line-size = 16
@@ -99,15 +99,15 @@ animation-charging-framerate = 750
 [module/i3]
 type = internal/i3
 
-ws-icon-0 = code;
-ws-icon-1 = web;
-ws-icon-2 = terminal;
-ws-icon-3 = music;
-ws-icon-4 = social;
-ws-icon-default = 
+ws-icon-0 = "1:code;"
+ws-icon-1 = "2:web;"
+ws-icon-2 = "3:term;"
+ws-icon-3 = "4:music;"
+ws-icon-4 = "5:social;"
+ws-icon-5 = "6:data;"
 
-fuzzy-match = true
-strip-wsnumbers = true
+index-sort = true
+ws-icon-default = 
 
 format = <label-state> <label-mode>
 
@@ -132,16 +132,12 @@ label-visible = %icon%
 label-visible-foreground = #55
 label-visible-padding = 4
 
-[module/bspwm-tmp]
-type = internal/bspwm
+[module/temp]
+type = internal/temperature
 format = <label-state>
 
-label-active = 
-label-active-padding = 1
-label-occupied = 
-label-occupied-padding = 1
-label-empty = 
-label-empty-padding = 1
+warn-temperature = 50
+; TODO: finish
 
 [module/cpu]
 type = internal/cpu
@@ -217,7 +213,7 @@ ping-interval = 10
 
 format-connected = <ramp-signal> <label-connected>
 label-connected = %essid%
-label-disconnected =    not connected
+label-disconnected =  
 label-disconnected-foreground = #66
 
 ramp-signal-0 = 
