@@ -1,8 +1,8 @@
 /* vim: ft=css
 */
 configuration {
-	modi: "drun,run,ssh";
-	combi-modi: "drun,run";
+	modi: "drun,ssh";
+	combi-modi: "drun";
 	display-combi: "Search";
 	/* width: 100; */
 	lines: 5;
