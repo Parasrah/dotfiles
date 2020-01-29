@@ -187,5 +187,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
+# startup
+exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id flameshot
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
