@@ -50,7 +50,6 @@ modules-left = i3
 modules-right = cpu memory
 
 [module/backlight]
-output = eDP-1
 type = internal/xbacklight
 format = <ramp> <bar>
 
@@ -101,14 +100,14 @@ type = internal/i3
 
 ws-icon-0 = "1:code;"
 ws-icon-1 = "2:web;"
-ws-icon-2 = "3:term;"
-ws-icon-3 = "4:music;"
-ws-icon-4 = "5:social;"
-ws-icon-5 = "6:data;"
+ws-icon-2 = "3:data;"
+ws-icon-3 = "4:view;"
+ws-icon-4 = "5:;"
+ws-icon-5 = "6;"
 ws-icon-6 = "7;"
 ws-icon-7 = "8;"
 ws-icon-8 = "9;"
-ws-icon-9 = "10:view;"
+ws-icon-9 = "10;"
 
 index-sort = true
 ws-icon-default = 
@@ -211,7 +210,7 @@ bar-progress-empty-foreground = #44
 
 [module/wireless-network]
 type = internal/network
-interface = wlp2s0
+interface = wlp0s20f3
 interval = 3.0
 ping-interval = 10
 
@@ -235,7 +234,6 @@ animation-packetloss-framerate = 500
 
 [module/volume]
 type = internal/pulseaudio
-sink = alsa_output.pci-0000_00_1f.3.analog-stereo
 use_ui_max = false
 interval = 5
 
