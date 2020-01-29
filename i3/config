@@ -34,8 +34,8 @@ bindsym XF86AudioMute exec --no-startup-id pulseaudio-ctl mute
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
 
 # media player controls
 bindsym XF86AudioPlay exec playerctl play-pause
@@ -57,11 +57,12 @@ assign [class="Firefox"] → $ws4
 # scratchpad
 bindsym $mod+Shift+backslash move scratchpad
 bindsym $mod+backslash [class="kitty"] scratchpad show
-bindsym $mod+minus [class="Teams"] scratchpad show
+bindsym $mod+minus [class="Signal|Teams"] scratchpad show
 bindsym $mod+equal [class="Spotify"] scratchpad show
 
 for_window [title="Microsoft Teams Notification"] floating enable
 for_window [class="Teams" title="^(?!Microsoft Teams Notification$)"] move scratchpad
+for_window [class="Signal"] move scratchpad
 for_window [class="Spotify"] move scratchpad
 
 # use mouse+$mod to drag floating windows
@@ -88,11 +89,11 @@ bindsym $mod+Shift+r restart
 # exit i3
 mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown" {
   bindsym l exec gnome-screensaver-command -l
-  bindsym Shift+l exec i3-msg exit
-  bindsym r exec systemctl reboot
-  bindsym s exec systemctl shutdown
+  bindsym Shift+l mode default, exec i3-msg exit
+  bindsym r mode default, exec systemctl reboot
+  bindsym s mode default, exec systemctl shutdown
   bindsym Escape mode "default"
-  bindsym Shift+bracketleft mode "default"
+  bindsym Control+bracketleft mode "default"
 }
 
 bindsym $mod+Shift+e mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown"
