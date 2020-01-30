@@ -21,9 +21,7 @@ set $left h
 set $right l
 
 # fonts
-font pango:Noto Sans Regular 8
-
-# TODO: screen lock
+font pango:Noto Sans Regular 10
 
 # TODO: styling windows
 
@@ -45,6 +43,9 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # default workspace layout
 workspace_layout tabbed
+
+# title padding
+for_window [class=".*"] title_format "    %title"
 
 # workspace assignment
 assign [class="code"] → $ws1
@@ -88,10 +89,10 @@ bindsym $mod+Shift+r restart
 
 # exit i3
 mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown" {
-  bindsym l exec gnome-screensaver-command -l
-  bindsym Shift+l mode default, exec i3-msg exit
-  bindsym r mode default, exec systemctl reboot
-  bindsym s mode default, exec systemctl shutdown
+  bindsym l mode default, exec gnome-screensaver-command -l
+  bindsym Shift+l exec i3-msg exit
+  bindsym r exec reboot
+  bindsym s exec shutdown now
   bindsym Escape mode "default"
   bindsym Control+bracketleft mode "default"
 }
@@ -186,9 +187,18 @@ mode "resize" {
         bindsym $mod+r mode "default"
 }
 
+# colors
+# class                 border  backgr. text    indicator child_border
+client.focused          #212121 #212121 #ffffff #2e9ef4   #212121
+client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.unfocused        #424242 #424242 #888888 #292d2e   #222222
+client.urgent           #2f343a #900000 #ffffff #900000   #900000
+client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+
+# client.background       #ffffff
+
 bindsym $mod+r mode "resize"
 
 # startup
-exec --no-startup-id setxkbmap -option ctrl:nocaps
 exec --no-startup-id flameshot
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
