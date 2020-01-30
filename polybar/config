@@ -210,7 +210,7 @@ bar-progress-empty-foreground = #44
 
 [module/wireless-network]
 type = internal/network
-interface = wlp2s0
+interface = ${env:WIRELESS_INTERFACE}
 interval = 3.0
 ping-interval = 10
 
