@@ -46,7 +46,7 @@ bindsym XF86AudioPrev exec playerctl previous
 workspace_layout tabbed
 
 # title padding
-for_window [class=".*"] title_format "    %title"
+title_align center
 
 # workspace assignment
 assign [class="code"] → $ws1
@@ -58,7 +58,7 @@ assign [class="Firefox"] → $ws4
 
 # scratchpad
 bindsym $mod+Shift+backslash move scratchpad
-bindsym $mod+backslash [class="kitty"] scratchpad show
+bindsym $mod+backslash [class="__scratchpad"] scratchpad show
 bindsym $mod+minus [class="Signal|Teams"] scratchpad show
 bindsym $mod+equal [class="Spotify"] scratchpad show
 
@@ -66,6 +66,9 @@ for_window [title="Microsoft Teams Notification"] floating enable
 for_window [class="Teams" title="^(?!Microsoft Teams Notification$)"] move scratchpad
 for_window [class="Signal"] move scratchpad
 for_window [class="Spotify"] move scratchpad
+
+for_window [class="__scratchpad"] move scratchpad
+exec --no-startup-id echo "launch nvim --cmd term" | kitty --class=__scratchpad --session -
 
 # use mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -193,12 +196,12 @@ mode "resize" {
 # colors
 # class                 border  backgr. text    indicator child_border
 client.focused          #212121 #212121 #ffffff #2e9ef4   #212121
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+client.focused_inactive #333333 #333333 #ffffff #484e50   #5f676a
 client.unfocused        #424242 #424242 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
 client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
-# client.background       #ffffff
+client.background       #000000
 
 bindsym $mod+r mode "resize"
 
