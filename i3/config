@@ -24,7 +24,9 @@ set $right l
 # fonts
 font pango:Noto Sans Regular 10
 
-# TODO: styling windows
+# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
+# screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
@@ -67,8 +69,10 @@ for_window [class="Teams" title="^(?!Microsoft Teams Notification$)"] move scrat
 for_window [class="Signal"] move scratchpad
 for_window [class="Spotify"] move scratchpad
 
+set $scratchpad_kitty echo "launch nvim -u ${NVIMCONFIG}/nconfig/terminal.vim" | kitty --class=__scratchpad --session -
 for_window [class="__scratchpad"] move scratchpad
-exec --no-startup-id echo "launch nvim --cmd term" | kitty --class=__scratchpad --session -
+exec --no-startup-id $scratchpad_kitty
+bindsym $mod+BackSpace exec --no-startup-id $scratchpad_kitty
 
 # use mouse+$mod to drag floating windows
 floating_modifier $mod
