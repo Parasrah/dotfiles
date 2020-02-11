@@ -69,7 +69,7 @@ for_window [class="Teams" title="^(?!Microsoft Teams Notification$)"] move scrat
 for_window [class="Signal"] move scratchpad
 for_window [class="Spotify"] move scratchpad
 
-set $scratchpad_kitty echo "launch nvim -u ${NVIMCONFIG}/nconfig/terminal.vim" | kitty --class=__scratchpad --session -
+set $scratchpad_kitty kitty --class=__scratchpad --session $DOTFILES/kitty/terminal.conf
 for_window [class="__scratchpad"] move scratchpad
 exec --no-startup-id $scratchpad_kitty
 bindsym $mod+BackSpace exec --no-startup-id $scratchpad_kitty
