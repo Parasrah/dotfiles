@@ -60,10 +60,13 @@ assign [class="Firefox"] → $ws4
 
 # scratchpad
 set $scratchpad_kitty kitty --class=__scratchpad --session $DOTFILES/kitty/terminal.conf
-bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
+
+bindsym $mod+BackSpace scratchpad show
 bindsym $mod+backslash [class="__scratchpad"] scratchpad show
 bindsym $mod+minus [class="Signal|Teams"] scratchpad show
 bindsym $mod+equal [class="Spotify"] scratchpad show
+
+bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
 bindsym $mod+Shift+equal exec --no-startup-id spotify
 
 for_window [title="Microsoft Teams Notification"] floating enable
