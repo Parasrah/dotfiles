@@ -59,20 +59,18 @@ assign [class="chrome"] → $ws4
 assign [class="Firefox"] → $ws4
 
 # scratchpad
-bindsym $mod+Shift+backslash move scratchpad
+set $scratchpad_kitty kitty --class=__scratchpad --session $DOTFILES/kitty/terminal.conf
+bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
 bindsym $mod+backslash [class="__scratchpad"] scratchpad show
 bindsym $mod+minus [class="Signal|Teams"] scratchpad show
 bindsym $mod+equal [class="Spotify"] scratchpad show
+bindsym $mod+Shift+equal exec --no-startup-id spotify
 
 for_window [title="Microsoft Teams Notification"] floating enable
 for_window [class="Teams" title="^(?!Microsoft Teams Notification$)"] move scratchpad
 for_window [class="Signal"] move scratchpad
 for_window [class="Spotify"] move scratchpad
-
-set $scratchpad_kitty kitty --class=__scratchpad --session $DOTFILES/kitty/terminal.conf
 for_window [class="__scratchpad"] move scratchpad
-exec --no-startup-id $scratchpad_kitty
-bindsym $mod+BackSpace exec --no-startup-id $scratchpad_kitty
 
 # use mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -211,4 +209,5 @@ bindsym $mod+r mode "resize"
 
 # startup
 exec --no-startup-id flameshot
+exec --no-startup-id $scratchpad_kitty
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
