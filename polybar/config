@@ -20,8 +20,14 @@ font-1 = Font Awesome 5 Free:style=Solid:size=10;
 font-2 = Font Awesome 5 Brands:style=Regular:size=10;
 font-3 = Cascadia Code:style=Regular:size=10;0
 
-modules-left = powermenu mpd
+modules-left = mpd
 modules-right = volume wireless-network backlight battery date
+
+; tray
+tray-position = none
+tray-detached = false
+tray-padding = 0
+tray-scale = 1.0
 
 [bar/bottom]
 bottom = true
@@ -244,38 +250,6 @@ label-muted-foreground = #66
 ramp-volume-0 = 
 ramp-volume-1 = 
 ramp-volume-2 = 
-
-[module/powermenu]
-type = custom/menu
-
-format-padding = 5
-
-label-open = 
-label-close = 
-
-menu-0-0 = Reboot
-menu-0-0-foreground = #fba922
-menu-0-0-exec = menu_open-1
-
-menu-0-1 = Power off
-menu-0-1-foreground = #fba922
-menu-0-1-exec = menu_open-2
-
-menu-1-0 = Cancel
-menu-1-0-foreground = #fba922
-menu-1-0-exec = menu_open-0
-
-menu-1-1 = Reboot
-menu-1-1-foreground = #fba922
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = Power off
-menu-2-0-foreground = #fba922
-menu-2-0-exec = sudo poweroff
-
-menu-2-1 = Cancel
-menu-2-1-foreground = #fba922
-menu-2-1-exec = menu_open-0
 
 [module/clock]
 type = internal/date
