@@ -63,7 +63,7 @@ set $scratchpad_kitty kitty --class=__scratchpad --session $DOTFILES/kitty/termi
 
 bindsym $mod+BackSpace scratchpad show
 bindsym $mod+backslash [class="__scratchpad"] scratchpad show
-bindsym $mod+minus [class="Signal|Teams"] scratchpad show
+bindsym $mod+minus [class="Signal|Teams|discord"] scratchpad show
 bindsym $mod+equal [class="Spotify"] scratchpad show
 
 bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
@@ -73,6 +73,7 @@ for_window [title="Microsoft Teams Notification"] floating enable
 for_window [class="Teams" title="^(?!Microsoft Teams Notification$)"] move scratchpad
 for_window [class="Signal"] move scratchpad
 for_window [class="Spotify"] move scratchpad
+for_window [class="discord"] move scratchpad
 for_window [class="__scratchpad"] move scratchpad
 
 # use mouse+$mod to drag floating windows
