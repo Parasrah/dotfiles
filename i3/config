@@ -2,8 +2,9 @@
 # i3 config file (v4)
 
 # variables
-set $mod Mod1
-set $super Mod4
+# super Mod4
+# alt Mod1
+set $mod Mod4
 
 set $ws1 "1:code"
 set $ws2 "2:web"
@@ -108,8 +109,6 @@ mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown" {
 }
 
 bindsym $mod+Shift+e mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown"
-
-bindsym $super+l exec i3lock
 
 # change focus
 bindsym $mod+$left focus left
