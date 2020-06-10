@@ -1,6 +1,8 @@
 # vim: ft=i3config
 # i3 config file (v4)
 
+# TODO: organize
+
 # variables
 # super Mod4
 # alt Mod1
@@ -16,11 +18,47 @@ set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9:game"
 set $ws10 "10"
+set $ws11 "11:social"
+set $ws12 "12:music"
+set $ws13 "13:term"
 
 set $up k
 set $down j
 set $left h
 set $right l
+
+bindsym $mod+1 workspace --no-auto-back-and-forth $ws1
+bindsym $mod+2 workspace --no-auto-back-and-forth $ws2
+bindsym $mod+3 workspace --no-auto-back-and-forth $ws3
+bindsym $mod+4 workspace --no-auto-back-and-forth $ws4
+bindsym $mod+5 workspace --no-auto-back-and-forth $ws5
+bindsym $mod+6 workspace --no-auto-back-and-forth $ws6
+bindsym $mod+7 workspace --no-auto-back-and-forth $ws7
+bindsym $mod+8 workspace --no-auto-back-and-forth $ws8
+bindsym $mod+9 workspace --no-auto-back-and-forth $ws9
+bindsym $mod+0 workspace --no-auto-back-and-forth $ws10
+bindsym $mod+minus workspace $ws11
+bindsym $mod+equal workspace $ws12
+bindsym $mod+backslash workspace $ws13
+
+# move focused container to workspace
+bindsym $mod+Shift+1 move container to workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws10
+
+workspace_auto_back_and_forth yes
+
+# # gaps
+# for_window [class=".*"] border pixel 0
+# gaps outer 0
+# gaps inner 15
 
 # fonts
 font pango:Noto Sans Regular 10
@@ -46,7 +84,7 @@ bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
 
 # default workspace layout
-workspace_layout tabbed
+workspace_layout default
 
 # title padding
 title_align center
@@ -58,24 +96,23 @@ assign [class="azuredatastudio"] → $ws3
 assign [class="Chromium"] → $ws4
 assign [class="chrome"] → $ws4
 assign [class="Firefox"] → $ws4
+assign [class="__scratchpad"] → $ws13
+assign [class="Teams" title="^(?!Microsoft Teams Notification$)"] → $ws11
+assign [class="Signal"] → $ws11
+assign [class="discord"] → $ws11
+# https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/m-p/1315693#M153640
+# assign [class="Spotify"] → $ws12
+for_window [class="Spotify"] move to workspace $ws12
 
-# scratchpad
+# notifications
+for_window [title="Microsoft Teams Notification"] floating enable
+
+# kitty
 set $scratchpad_kitty kitty --class=__scratchpad --session $DOTFILES/kitty/terminal.conf
 
-bindsym $mod+BackSpace scratchpad show
-bindsym $mod+backslash [class="__scratchpad"] scratchpad show
-bindsym $mod+minus [class="Signal|Teams|discord"] scratchpad show
-bindsym $mod+equal [class="Spotify"] scratchpad show
-
+# start programs
 bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
 bindsym $mod+Shift+equal exec --no-startup-id spotify
-
-for_window [title="Microsoft Teams Notification"] floating enable
-for_window [class="Teams" title="^(?!Microsoft Teams Notification$)"] move scratchpad
-for_window [class="Signal"] move scratchpad
-for_window [class="Spotify"] move scratchpad
-for_window [class="discord"] move scratchpad
-for_window [class="__scratchpad"] move scratchpad
 
 # use mouse+$mod to drag floating windows
 floating_modifier $mod
@@ -151,29 +188,6 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+c focus child
 
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
-
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
-
 # move to next/prev workspace
 bindsym $mod+bracketleft workspace prev
 bindsym $mod+bracketright workspace next
@@ -212,5 +226,5 @@ bindsym $mod+r mode "resize"
 
 # startup
 exec --no-startup-id flameshot
-exec --no-startup-id $scratchpad_kitty
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
+exec --no-startup-id i3-msg workspace $ws1
