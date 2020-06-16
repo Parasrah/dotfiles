@@ -108,7 +108,7 @@ for_window [class="Spotify"] move to workspace $ws12
 for_window [title="Microsoft Teams Notification"] floating enable
 
 # kitty
-set $scratchpad_kitty kitty --class=__scratchpad --session $DOTFILES/kitty/terminal.conf
+set $scratchpad_kitty kitty --class=__scratchpad
 
 # start programs
 bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
