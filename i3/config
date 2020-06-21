@@ -108,7 +108,7 @@ for_window [class="Spotify"] move to workspace $ws12
 for_window [title="Microsoft Teams Notification"] floating enable
 
 # kitty
-set $scratchpad_kitty kitty --class=__scratchpad
+set $scratchpad_kitty kitty -1 --class=__scratchpad
 
 # start programs
 bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
@@ -118,7 +118,7 @@ bindsym $mod+Shift+equal exec --no-startup-id spotify
 floating_modifier $mod
 
 # open terminal
-bindsym $mod+Return exec i3-sensible-terminal
+bindsym $mod+Return exec kitty -1
 
 # kill window
 bindsym $mod+Shift+q kill
