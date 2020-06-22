@@ -1,0 +1,9 @@
+= Dotfiles
+
+my collection of dotfiles for unix systems
+
+== TODO
+
+* `rofi`
+** [ ] `<mod+space>` to choose from list of `kakoune` sessions to open
+** [ ] explore other features
