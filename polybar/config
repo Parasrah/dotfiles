@@ -1,9 +1,8 @@
-; vim: ft=dosini
 [bar/top]
 width = 100%
 height = 34
 
-; dpi = ${xrdb:Xft.dpi:-1}
+dpi = ${xrdb:Xft.dpi:-1}
 
 enable-ipc = true
 
@@ -18,25 +17,19 @@ padding-right = 5
 module-margin = 4
 
 font-0 = Noto Sans:style=Regular:size=10;0
-font-1 = Font Awesome 5 Free:style=Solid:size=10;
-font-2 = Font Awesome 5 Brands:style=Regular:size=10;
-font-3 = Cascadia Code:style=Regular:size=10;0
+font-1 = Noto Sans:style=Regular:size=10;0
+font-2 = Font Awesome 5 Free:style=Solid:size=10;
+font-3 = Font Awesome 5 Brands:style=Regular:size=10;
 
 modules-left = mpd
 modules-right = volume wireless-network backlight battery date
-
-; tray
-tray-position = none
-tray-detached = false
-tray-padding = 0
-tray-scale = 1.0
 
 [bar/bottom]
 bottom = true
 width = 100%
 height = 27
 
-; dpi = ${xrdb:Xft.dpi:-1}
+dpi = ${xrdb:Xft.dpi:-1}
 
 enable-ipc = true
 
@@ -52,12 +45,13 @@ module-margin-left = 0
 module-margin-right = 6
 
 font-0 = Noto Sans:style=Regular:size=10;0
-font-1 = Font Awesome 5 Free:style=Solid:size=10;
-font-2 = Font Awesome 5 Brands:style=Regular:size=10;
-font-3 = Cascadia Code:style=Regular:size=10;0
+font-1 = Noto Sans:style=Regular:size=10;3
+font-2 = Font Awesome 5 Free:style=Solid:size=10;
+font-3 = Font Awesome 5 Brands:style=Regular:size=10;
+font-4 = Cascadia Code:style=Regular:size=10;2
 
 modules-left = i3
-modules-right = cpu memory
+modules-right = filesystem cpu memory
 
 [module/backlight]
 type = internal/xbacklight
@@ -124,7 +118,6 @@ ws-icon-12 = "13:term;"
 
 index-sort = true
 ws-icon-default = 
-
 format = <label-state> <label-mode>
 
 label-focused = %icon%
@@ -160,6 +153,7 @@ type = internal/cpu
 interval = 0.5
 format = <label> <ramp-coreload>
 label = CPU
+label-font = 2
 
 ramp-coreload-0 = ▁
 ramp-coreload-0-foreground = #aaff77
@@ -185,16 +179,20 @@ date-alt = %%{F#fff}%A, %d %B %Y  %%{F#fff}%H:%M%%{F#666}:%%{F#fba922}%S%%{F-}
 type = internal/memory
 format = <label> <bar-used>
 label = RAM
+label-font = 2
 
 bar-used-width = 30
 bar-used-foreground-0 = #aaff77
 bar-used-foreground-1 = #aaff77
 bar-used-foreground-2 = #fba922
 bar-used-foreground-3 = #ff5555
-bar-used-indicator = |
+bar-used-indicator = ●
+bar-used-indicator-font = 5
 bar-used-indicator-foreground = #ff
 bar-used-fill = ─
+bar-used-fill-font = 2
 bar-used-empty = ─
+bar-used-empty-font = 2
 bar-used-empty-foreground = #444444
 
 [module/mpd]
@@ -262,3 +260,28 @@ ramp-volume-2 = 
 type = internal/date
 interval = 2
 date = %%{F#999}%Y-%m-%d%%{F-}  %%{F#fff}%H:%M%%{F-}
+
+[module/filesystem]
+type = internal/fs
+
+fixed-values = true
+
+format-mounted = <label-mounted> <bar-used>
+label-mounted = fs (%mountpoint%)
+label-mounted-font = 2
+
+bar-used-width = 30
+bar-used-foreground-0 = #aaff77
+bar-used-foreground-1 = #aaff77
+bar-used-foreground-2 = #fba922
+bar-used-foreground-3 = #ff5555
+bar-used-indicator = ●
+bar-used-indicator-font = 5
+bar-used-indicator-foreground = #ff
+bar-used-fill = ─
+bar-used-fill-font = 2
+bar-used-empty = ─
+bar-used-empty-font = 2
+bar-used-empty-foreground = #444444
+
+mount-0 = /

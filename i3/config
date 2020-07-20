@@ -214,7 +214,7 @@ mode "resize" {
 
 # colors
 # class                 border  backgr. text    indicator child_border
-client.focused          #212121 #212121 #ffffff #2e9ef4   #212121
+client.focused          #212121 #212121 #ffffff #616161   #212121
 client.focused_inactive #333333 #333333 #ffffff #484e50   #5f676a
 client.unfocused        #424242 #424242 #888888 #292d2e   #222222
 client.urgent           #2f343a #900000 #ffffff #900000   #900000
