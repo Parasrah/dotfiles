@@ -13,6 +13,7 @@ line-color = ${bar/bottom.background}
 line-size = 16
 
 spacing = 2
+padding-left = 5
 padding-right = 5
 module-margin = 4
 
@@ -20,6 +21,10 @@ font-0 = Noto Sans:style=Regular:size=10;0
 font-1 = Noto Sans:style=Regular:size=10;0
 font-2 = Font Awesome 5 Free:style=Solid:size=10;
 font-3 = Font Awesome 5 Brands:style=Regular:size=10;
+font-4 = Cascadia Code:style=Regular:size=10;2
+font-5 = Cascadia Code:style=Regular:size=10;2
+font-6 = DejaVu Sans:style=Regular:size=10;0
+font-7 = DejaVu Sans:style=Regular:size=10;1
 
 modules-left = mpd
 modules-right = volume wireless-network backlight battery date
@@ -200,7 +205,9 @@ bar-used-empty-foreground = #444444
 
 [module/mpd]
 type = internal/mpd
-format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress> <label-time>  <label-song>
+format-online = <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>  <bar-progress>  <label-song>
+
+label-song = %artist% - %title%
 
 icon-play = 
 icon-pause = 
@@ -213,13 +220,16 @@ icon-repeat = 
 toggle-on-foreground =
 toggle-off-foreground = #55
 
-bar-progress-width = 45
+bar-progress-width = 30
 bar-progress-format = %{A4:mpdseek+2: A5:mpdseek-2:}%fill%%indicator%%empty%%{A A}
 bar-progress-indicator = |
+bar-progress-indicator-font = 7
 bar-progress-indicator-foreground = #ff
 bar-progress-fill = ─
+bar-progress-fill-font = 8
 bar-progress-fill-foreground = #bb
 bar-progress-empty = ─
+bar-progress-empty-font = 8
 bar-progress-empty-foreground = #44
 
 [module/wireless-network]
