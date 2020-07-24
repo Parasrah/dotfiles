@@ -9,7 +9,7 @@ set $ws1  "1:code"
 set $ws2  "2:web"
 set $ws3  "3:data"
 set $ws4  "4:view"
-set $ws5  "5"
+set $ws5  "5:vscode"
 set $ws6  "6"
 set $ws7  "7"
 set $ws8  "8"
@@ -89,16 +89,16 @@ workspace_layout default
 title_align center
 
 # workspace assignment
-assign [class="code"]                                             → $ws1
 assign [class="Brave"]                                            → $ws2
 assign [class="azuredatastudio"]                                  → $ws3
 assign [class="Chromium"]                                         → $ws4
 assign [class="chrome"]                                           → $ws4
 assign [class="Firefox"]                                          → $ws4
-assign [class="__scratchpad"]                                     → $ws13
+assign [class="code"]                                             → $ws5
 assign [class="Teams" title="^(?!Microsoft Teams Notification$)"] → $ws11
 assign [class="Signal"]                                           → $ws11
 assign [class="discord"]                                          → $ws11
+assign [class="__scratchpad"]                                     → $ws13
 # https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/m-p/1315693#M153640
 # assign [class="Spotify"] → $ws12
 for_window [class="Spotify"] move to workspace $ws12
