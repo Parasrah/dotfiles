@@ -62,10 +62,6 @@ workspace_auto_back_and_forth yes
 # fonts
 font pango:Noto Sans Regular 10
 
-# xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
-# screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
-
 # volume controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
 bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
@@ -135,7 +131,7 @@ bindsym $mod+Shift+r restart
 
 # system state
 mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown" {
-  bindsym l mode default, exec i3lock
+  bindsym l mode default, exec $HOME/.config/i3/lock
   bindsym Shift+l exec i3-msg exit
   bindsym r exec reboot
   bindsym s exec shutdown now
@@ -214,4 +210,5 @@ bindsym $mod+r mode "resize"
 # startup
 exec        --no-startup-id flameshot
 exec        --no-startup-id i3-msg workspace $ws1
+exec        --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/.config/i3/lock --nofork
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
