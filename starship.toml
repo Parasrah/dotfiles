@@ -1,0 +1,15 @@
+add_newline = false
+
+[character]
+symbol = "❯"
+
+[package]
+disabled = false
+
+[elm]
+
+[elixir]
+
+[erlang]
+
+[nodejs]
