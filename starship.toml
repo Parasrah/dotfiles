@@ -3,13 +3,118 @@ add_newline = false
 [character]
 symbol = "❯"
 
+[hostname]
+disabled = false
+ssh_only = true
+
+[username]
+disabled = false
+
+[line_break]
+disabled = false
+
+[jobs]
+disabled = false
+
 [package]
 disabled = false
 
+[directory]
+disabled = false
+
+[git_branch]
+disabled = false
+
+[git_commit]
+disabled = false
+only_detached = true
+
+[git_state]
+disabled = false
+
+[git_status]
+disabled = false
+
+[nix_shell]
+disabled = false
+
 [elm]
+disabled = false
 
 [elixir]
+disabled = false
 
 [erlang]
+disabled = false
 
 [nodejs]
+disabled = false
+
+[dotnet]
+disabled = false
+
+[python]
+disabled = false
+
+[rust]
+disabled = false
+
+[env_var]
+disabled = true
+
+[memory]
+disabled = true
+
+[time]
+disabled = true
+
+[singularity]
+disabled = true
+
+[terraform]
+disabled = true
+
+[hg_branch]
+disabled = true
+
+[docker_context]
+disabled = true
+
+[kubernetes]
+disabled = true
+
+[ruby]
+disabled = true
+
+[nim]
+disabled = true
+
+[golang]
+disabled = true
+
+[java]
+disabled = true
+
+[aws]
+disabled = true
+
+[battery]
+disabled = true
+
+[conda]
+disabled = true
+
+[crystal]
+disabled = true
+
+[julia]
+disabled = true
+
+[ocaml]
+disabled = true
+
+[php]
+disabled = true
+
+[zig]
+disabled = false
