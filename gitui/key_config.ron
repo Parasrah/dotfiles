@@ -40,7 +40,7 @@
 
     enter: ( code: Enter, modifiers: ( bits: 0,),),
 
-    edit_file: ( code: Char('I'), modifiers: ( bits: 0,),),
+    edit_file: ( code: Char('e'), modifiers: ( bits: 0,),),
 
     status_stage_all: ( code: Char('a'), modifiers: ( bits: 0,),),
 
