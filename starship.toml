@@ -14,7 +14,7 @@ disabled = false
 disabled = false
 
 [jobs]
-disabled = false
+disabled = true
 
 [package]
 disabled = false
