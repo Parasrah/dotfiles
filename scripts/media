@@ -1,0 +1,73 @@
+#!/usr/bin/env bash
+
+command="${1:-help}"
+
+function parse_mpc_status() {
+    mpc_status=$(mpc status)
+
+    if echo $mpc_status | rg 'playing' >/dev/null
+    then
+        echo "Playing"
+    elif echo $mpc_status | rg 'paused' >/dev/null
+    then
+        echo "Paused"
+    else
+        echo "Stopped"
+    fi
+}
+
+function is_mpc() {
+    mpc_status="${1:-$(parse_mpc_status)}"
+    [ "${mpc_status}" = "Playing" ] || [ "${mpc_status}" = "Paused" ]
+}
+
+function status() {
+    mpc_status="$(parse_mpc_status)"
+    if is_mpc $mpc_status; then
+        echo $mpc_status
+    else
+        playerctl status
+    fi
+}
+
+function toggle() {
+    if is_mpc; then
+        mpc toggle >/dev/null
+    else
+        playerctl toggle >/dev/null
+    fi
+}
+
+function play() {
+    if is_mpc; then
+        mpc play >/dev/null
+    else
+        playerctl play >/dev/null
+    fi
+}
+
+function pause() {
+    if is_mpc; then
+        mpc pause >/dev/null
+    else
+        playerctl pause >/dev/null
+    fi
+}
+
+case $command in
+    status)
+        status
+        ;;
+    play)
+        play
+        ;;
+    pause)
+        pause
+        ;;
+    toggle)
+        toggle
+        ;;
+    *)
+        echo "no help"
+        ;;
+esac
