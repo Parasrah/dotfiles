@@ -1,10 +1,10 @@
 #!/usr/bin/env dash
-status=$(media status)
+status=$(playerctl status)
 if [ "${status}" = "Playing" ]; then
-    media pause
+    playerctl pause
     sleep 1
 fi
 cvlc "${DOTFILES}/skyrim_quest_update.mp3" --play-and-exit
 if [ "${status}" = "Playing" ]; then
-    media play
+    playerctl play
 fi
