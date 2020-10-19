@@ -1,0 +1,24 @@
+#!/usr/bin/env dash
+
+new_session=${PWD##*/}
+
+exists() {
+    for session in $(kak -l);
+    do
+        if [ "${new_session}" = "${session}" ];
+        then
+            return 0
+            break
+        fi
+    return 1
+    done
+}
+
+
+if exists;
+then
+    kak -c $new_session
+else
+    setsid kak -d -s "${new_session}" < /dev/null > /dev/null 2>&1 &
+    kak -c $new_session
+fi
