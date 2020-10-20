@@ -1,0 +1,7 @@
+#!/usr/bin/env dash
+
+kak -clear
+for session in $(kak -l);
+do
+    echo kill! | kak -p "${session}"
+done
