@@ -16,11 +16,11 @@ exists() {
 
 if exists;
 then
-    kak -c $new_session
+    kak -c $new_session "$@"
 else
     setsid kak -d -s "${new_session}" < /dev/null > /dev/null 2>&1 &
     while ! kak -l | rg -q -F -x "${new_session}"; do
         continue
     done
-    kak -c $new_session
+    kak -c $new_session "$@"
 fi
