@@ -1,0 +1,8 @@
+#!/usr/bin/env dash
+
+cmd=$@
+
+for session in $(lsof -U 2>/dev/null | rg "@kitty-scratch-\d+" -o);
+do
+    echo $@ | kitty @ --to="unix:${session}" send-text --stdin
+done
