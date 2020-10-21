@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+
+CURR_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+ln -s "${CURR_DIR}/broot" "${HOME}/broot"
+ln -s "${CURR_DIR}/dunst" "${HOME}/dunst"
+ln -s "${CURR_DIR}/gitui" "${HOME}/gitui"
+ln -s "${CURR_DIR}/i3" "${HOME}/i3"
+ln -s "${CURR_DIR}/kak" "${HOME}/kak"
+ln -s "${CURR_DIR}/kitty" "${HOME}/kitty"
+ln -s "${CURR_DIR}/nvim" "${HOME}/nvim"
+ln -s "${CURR_DIR}/polybar" "${HOME}/polybar"
+ln -s "${CURR_DIR}/rofi" "${HOME}/rofi"

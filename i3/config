@@ -4,6 +4,7 @@
 # super Mod4
 # alt Mod1
 set $mod Mod3
+set $super Mod4
 
 set $ws1  "1:code"
 set $ws2  "2:web"
@@ -105,7 +106,6 @@ for_window [title="Microsoft Teams Notification"] floating enable
 # kitty
 set $scratchpad_kitty kitty --class=__scratchpad --listen-on=unix:@kitty-scratch-{kitty_pid}
 
-
 # start programs
 bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
 
@@ -114,6 +114,10 @@ floating_modifier $mod
 
 # open terminal
 bindsym $mod+Return exec kitty
+
+# backup in case format messed up
+bindsym $super+Return exec kitty
+bindsym $super+\ exec fix-keyboard
 
 # kill window
 bindsym $mod+Shift+q kill
