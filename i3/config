@@ -53,12 +53,40 @@ bindsym $mod+Shift+0     move container to workspace $ws10
 bindsym $mod+Shift+minus move container to workspace $ws11
 bindsym $mod+Shift+equal move container to workspace $ws12
 
-workspace_auto_back_and_forth yes
+# workspace assignment
+assign [class="Brave"]                                            → $ws2
+assign [class="azuredatastudio"]                                  → $ws3
+assign [class="Chromium"]                                         → $ws4
+assign [class="chrome"]                                           → $ws4
+assign [class="Firefox"]                                          → $ws4
+assign [class="code"]                                             → $ws5
+assign [class="Teams" title="^(?!Microsoft Teams Notification$)"] → $ws11
+assign [class="Signal"]                                           → $ws11
+assign [class="discord"]                                          → $ws11
+assign [class="__scratchpad"]                                     → $ws13
+# https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/m-p/1315693#M153640
+# assign [class="Spotify"] → $ws12
+for_window [class="Spotify"] move to workspace $ws12
 
-# # gaps
-# for_window [class=".*"] border pixel 0
-# gaps outer 0
-# gaps inner 15
+# floating
+for_window [title="Microsoft Teams Notification"] floating enable
+
+# 'scratch'
+set $scratchpad_kitty kitty --class=__scratchpad --listen-on=unix:@kitty-scratch-{kitty_pid}
+
+# backup in case format messed up
+bindsym $super+BackSpace exec fix-keyboard
+
+# use mouse+$mod to drag floating windows
+floating_modifier $mod
+
+# launch programs
+bindsym $mod+Return exec "kitty"
+bindsym $super+Return exec "kitty"
+bindsym $super+2 exec "brave-browser"
+bindsym $super+4 exec "chromium-browser"
+bindsym $super+9 exec "steam"
+bindsym $super+backslash exec --no-startup-id $scratchpad_kitty
 
 # fonts
 font pango:Noto Sans Regular 10
@@ -79,45 +107,17 @@ bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext  exec playerctl next
 bindsym XF86AudioPrev  exec playerctl previous
 
-# default workspace layout
+# workspace config
 workspace_layout default
+workspace_auto_back_and_forth yes
+
+# # gaps
+# for_window [class=".*"] border pixel 0
+# gaps outer 0
+# gaps inner 15
 
 # title padding
 title_align center
-
-# workspace assignment
-assign [class="Brave"]                                            → $ws2
-assign [class="azuredatastudio"]                                  → $ws3
-assign [class="Chromium"]                                         → $ws4
-assign [class="chrome"]                                           → $ws4
-assign [class="Firefox"]                                          → $ws4
-assign [class="code"]                                             → $ws5
-assign [class="Teams" title="^(?!Microsoft Teams Notification$)"] → $ws11
-assign [class="Signal"]                                           → $ws11
-assign [class="discord"]                                          → $ws11
-assign [class="__scratchpad"]                                     → $ws13
-# https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/m-p/1315693#M153640
-# assign [class="Spotify"] → $ws12
-for_window [class="Spotify"] move to workspace $ws12
-
-# notifications
-for_window [title="Microsoft Teams Notification"] floating enable
-
-# kitty
-set $scratchpad_kitty kitty --class=__scratchpad --listen-on=unix:@kitty-scratch-{kitty_pid}
-
-# start programs
-bindsym $mod+Shift+backslash exec --no-startup-id $scratchpad_kitty
-
-# use mouse+$mod to drag floating windows
-floating_modifier $mod
-
-# open terminal
-bindsym $mod+Return exec kitty
-
-# backup in case format messed up
-bindsym $super+Return exec kitty
-bindsym $super+\ exec fix-keyboard
 
 # kill window
 bindsym $mod+Shift+q kill
