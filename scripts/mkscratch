@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+dirs=$@
+
+for dir in $dirs;
+do
+    listen_on="unix:@kitty-scratch-${dir}"
+    kitty --detach --class=__scratchpad --listen-on="$listen_on"
+    #TODO: rg instead
+    sleep 0.3
+    echo "z ${dir}" | kitty @ --to="$listen_on" send-text --stdin
+done

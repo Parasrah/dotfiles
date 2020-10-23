@@ -2,7 +2,7 @@
 
 cmd=$@
 
-for session in $(lsof -U 2>/dev/null | rg "@kitty-scratch-\d+" -o);
+for session in $(lsof -U 2>/dev/null | rg "@kitty-scratch-[a-zA-Z0-9]+" -o);
 do
     echo $@ | kitty @ --to="unix:${session}" send-text --stdin
 done
