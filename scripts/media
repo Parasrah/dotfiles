@@ -3,13 +3,11 @@
 command="${1:-help}"
 
 function parse_mpc_status() {
-    mpc_status=$(mpc status)
+    mpc_status=$(mpc status 2>/dev/null)
 
-    if echo $mpc_status | rg 'playing' >/dev/null
-    then
+    if echo $mpc_status | rg 'playing' >/dev/null; then
         echo "Playing"
-    elif echo $mpc_status | rg 'paused' >/dev/null
-    then
+    elif echo $mpc_status | rg 'paused' >/dev/null; then
         echo "Paused"
     else
         echo "Stopped"
@@ -23,7 +21,7 @@ function is_mpc() {
 
 function status() {
     mpc_status="$(parse_mpc_status)"
-    if is_mpc $mpc_status; then
+    if [ ! "$mpc_status" = "Stopped" ]; then
         echo $mpc_status
     else
         playerctl status
