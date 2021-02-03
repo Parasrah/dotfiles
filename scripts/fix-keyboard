@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
-xset r rate 250 20
+xset r rate 250 5
 test -f "${DOTFILES}/layout.xkb" && xkbcomp "${DOTFILES}/layout.xkb" "$DISPLAY"
