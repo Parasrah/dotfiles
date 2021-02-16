@@ -2,7 +2,7 @@
 
 # variables
 # super Mod4
-# alt Mod1
+set $alt Mod1
 set $mod Mod3
 set $super Mod4
 
@@ -178,6 +178,9 @@ bindsym $mod+e layout toggle split
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
 
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
+
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
@@ -216,4 +219,6 @@ bindsym $mod+r mode "resize"
 exec        --no-startup-id flameshot
 exec        --no-startup-id i3-msg workspace $ws1
 exec        --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/.config/i3/lock --nofork
+exec        --no-startup-id dunst
+
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
