@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+for session in $(lsof -U 2>/dev/null | rg "@kitty-scratch-[a-zA-Z0-9]+" -o);
+do
+    # get pid of primary process
+    pid="$(kitty @ --to="unix:${session}" ls | jq -r '.[0] | .tabs | .[0] | .windows | .[0] | .foreground_processes | .[0] | .pid' 2>/dev/null)"
+    if [ ! -z "$pid" ]
+    then
+        # SIGINT process group (equivalent of CTRL-C)
+        kill -s SIGINT "-$pid"
+    fi
+done
