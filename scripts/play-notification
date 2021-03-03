@@ -1,10 +1,11 @@
 #!/usr/bin/env dash
-status=$(playerctl status)
-if [ "${status}" = "Playing" ]; then
-    playerctl pause
-    sleep 1
-fi
+# TODO: ensure valheim isn't running
+# status=$(playerctl status)
+# if [ "${status}" = "Playing" ]; then
+#     playerctl pause
+#     sleep 1
+# fi
 cvlc "${DOTFILES}/skyrim_quest_update.mp3" --play-and-exit
-if [ "${status}" = "Playing" ]; then
-    playerctl play
-fi
+# if [ "${status}" = "Playing" ]; then
+#     playerctl play
+# fi
