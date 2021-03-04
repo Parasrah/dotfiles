@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
 dirs=$@
+curr="$KITTY_LISTEN_ON"
 
 for dir in $dirs;
 do
@@ -10,3 +11,5 @@ do
     sleep 0.3
     echo "z ${dir}" | kitty @ --to="$listen_on" send-text --stdin
 done
+
+kitty @ --to="$curr" focus-window
