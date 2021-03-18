@@ -15,7 +15,7 @@ set $ws6  "6"
 set $ws7  "7"
 set $ws8  "8"
 set $ws9  "9:game"
-set $ws10 "10"
+set $ws10 "10:general"
 set $ws11 "11:social"
 set $ws12 "12:music"
 set $ws13 "13:term"
@@ -60,6 +60,7 @@ assign [class="Chromium"]                                         → $ws4
 assign [class="chrome"]                                           → $ws4
 assign [class="Firefox"]                                          → $ws4
 assign [class="code"]                                             → $ws5
+assign [class="steam"]                                            → $ws9
 assign [class="Teams" title="^(?!Microsoft Teams Notification$)"] → $ws11
 assign [class="Signal"]                                           → $ws11
 assign [class="discord"]                                          → $ws11

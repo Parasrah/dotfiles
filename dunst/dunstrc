@@ -24,16 +24,9 @@ show_indicators = no
 icon_position = off
 sticky_history = yes
 history_length = 20
-browser = /usr/bin/firefox -new-tab
-always_run_script = true
-title = Dunst
+browser = brave-browser -new-tab
+always_run_script = false
 class = Dunst
-
-[shortcuts]
-close = ctrl+space
-close_all = ctrl+shift+space
-history = ctrl+grave
-context = ctrl+shift+period
 
 [urgency_low]
 background = "#2f343f"
@@ -52,5 +45,5 @@ frame_color = "#bf616a"
 timeout = 0
 
 [play_sound]
-    summary = "*"
-    script = play-notification
+summary = "*"
+script = play-notification
