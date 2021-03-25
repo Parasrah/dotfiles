@@ -1243,7 +1243,7 @@ xkb_symbols "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key <AD11> {         [     bracketleft,       braceleft ] };
     key <AD12> {         [    bracketright,      braceright ] };
     key <RTRN> {         [          Return ] };
-    key <LCTL> {         [       Control_L ] };
+    key <LCTL> {         [       Escape ] };
     key <AC01> {
         type= "ALPHABETIC",
         symbols[Group1]= [               a,               A ]
@@ -1547,7 +1547,6 @@ xkb_symbols "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key <I251> {         [        NoSymbol ] };
     key <I254> {         [        XF86WWAN ] };
     key <I255> {         [      XF86RFKill ] };
-    modifier_map Mod3 { <LCTL> };
     modifier_map Shift { <LFSH> };
     modifier_map Shift { <RTSH> };
     modifier_map Mod1 { <LALT> };
@@ -1570,7 +1569,6 @@ xkb_geometry "pc(pc104)" {
     height=      180;
 
     alias <AC00> = <CAPS>;
-    alias <AA00> = <LCTL>;
 
     baseColor=   "white";
     labelColor=  "black";
@@ -1741,7 +1739,7 @@ xkb_geometry "pc(pc104)" {
             top=  77;
             left= 1;
             keys {
-                { <LCTL>, "MODK",   1, color="grey20" },
+                { <CAPS>, "MODK",   1, color="grey20" },
                 { <LWIN>, "SMOD",   1, color="grey20" },
                 { <LALT>, "SMOD",   1, color="grey20" },
                 { <SPCE>, "SPCE",   1 },
