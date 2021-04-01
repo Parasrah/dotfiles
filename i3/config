@@ -60,7 +60,7 @@ assign [class="Chromium"]                                         → $ws4
 assign [class="chrome"]                                           → $ws4
 assign [class="Firefox"]                                          → $ws4
 assign [class="code"]                                             → $ws5
-assign [class="evolution"]                                        → $ws8
+assign [class="Evolution"]                                        → $ws8
 assign [class="Steam"]                                            → $ws9
 assign [class="Teams" title="^(?!Microsoft Teams Notification$)"] → $ws11
 assign [class="Signal"]                                           → $ws11
