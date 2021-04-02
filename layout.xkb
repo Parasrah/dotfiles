@@ -1544,13 +1544,13 @@ xkb_symbols "pc+us+inet(evdev)+terminate(ctrl_alt_bksp)" {
     key <I244> {         [     XF86Battery ] };
     key <I245> {         [   XF86Bluetooth ] };
     key <I246> {         [        XF86WLAN ] };
-    key <I251> {         [        NoSymbol ] };
+    key <I251> {         [ XF86MonBrightnessCycle ] };
     key <I254> {         [        XF86WWAN ] };
     key <I255> {         [      XF86RFKill ] };
+    modifier_map Control { <CAPS> };
     modifier_map Shift { <LFSH> };
     modifier_map Shift { <RTSH> };
     modifier_map Mod1 { <LALT> };
-    modifier_map Control { <CAPS> };
     modifier_map Mod2 { <NMLK> };
     modifier_map Mod5 { <LVL3> };
     modifier_map Control { <RCTL> };
@@ -1568,7 +1568,7 @@ xkb_geometry "pc(pc104)" {
     width=       470;
     height=      180;
 
-    alias <AC00> = <CAPS>;
+    alias <AA00> = <CAPS>;
 
     baseColor=   "white";
     labelColor=  "black";
