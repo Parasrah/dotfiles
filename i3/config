@@ -125,7 +125,7 @@ title_align center
 bindsym $mod+Shift+q kill
 
 # application picker
-bindsym $mod+d exec "rofi -show combi -dpi $(xrdb -query | rg dpi | rg '\d+' -o)"
+bindsym $mod+d exec "$HOME/.config/rofi/launcher.sh"
 
 # screenshots
 bindsym Print exec "flameshot gui"
