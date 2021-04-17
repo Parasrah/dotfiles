@@ -1,7 +1,7 @@
 #!/usr/bin/env dash
 
 new_session="${PWD##*/}"
-new_session="$(echo "$new_session" | sd -- ' ' '_' | sd -- '-_' '')"
+new_session="$(echo "$new_session" | sd -- ' ' '_' | sd -- '-_' '' | sd -- '\.' '-')"
 
 exists() {
     for session in $(kak -l)
