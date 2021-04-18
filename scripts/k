@@ -1,12 +1,18 @@
 #!/usr/bin/env dash
 
-new_session="${PWD##*/}"
-new_session="$(echo "$new_session" | sd -- ' ' '_' | sd -- '-_' '' | sd -- '\.' '-')"
+curr_dir() {
+    dir="${PWD##*/}"
+    dir="$(echo "$dir" | sd -- ' ' '_' | sd -- '\.' '-' | sd -- '-_' '')"
+    printf %s "$dir"
+}
+
+session="${KAKOUNE_SESSION:-$(curr_dir)}"
 
 exists() {
-    for session in $(kak -l)
+    target="$1"
+    for s in $(kak -l)
     do
-        if [ "${new_session}" = "${session}" ];
+        if [ "${target}" = "${s}" ];
         then
             return 0
             break
@@ -15,13 +21,12 @@ exists() {
     return 1
 }
 
-if exists
+if ! exists "$session"
 then
-    kak -c "$new_session" "$@"
-else
-    setsid kak -d -s "${new_session}" < /dev/null > /dev/null 2>&1 &
-    while ! kak -l | rg -q -F -x "${new_session}"; do
-        continue
+    setsid kak -d -s "${session}" < /dev/null > /dev/null 2>&1 &
+    while ! kak -l | rg -q -F -x "${session}"; do
+        sleep 0.01
     done
-    kak -c "$new_session" "$@"
 fi
+
+kak -c "$session" "$@"
