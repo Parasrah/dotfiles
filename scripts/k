@@ -1,5 +1,7 @@
 #!/usr/bin/env dash
 
+# TODO: name first client 'main' if not taken
+
 curr_dir() {
     dir="${PWD##*/}"
     dir="$(echo "$dir" | sd -- ' ' '_' | sd -- '\.' '-' | sd -- '-_' '')"
