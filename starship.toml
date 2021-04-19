@@ -119,6 +119,9 @@ disabled = true
 [zig]
 disabled = false
 
+[cmd_duration]
+disabled = true
+
 [custom.kakoune]
 symbol = '🐈'
 command = 'kcr prompt'
