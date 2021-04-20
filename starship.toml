@@ -1,7 +1,10 @@
 add_newline = false
 
 [character]
-symbol = "❯"
+# defaults: ❯ ❮
+success_symbol = "[|>](bold green)"
+error_symbol = "[|>](bold red)"
+vicmd_symbol = "[<|](bold green)"
 
 [hostname]
 disabled = false
@@ -37,26 +40,34 @@ disabled = false
 
 [nix_shell]
 disabled = false
+symbol = "❄️ "
 
 [elm]
+# TODO: only show package version
 disabled = false
 
 [elixir]
+# TODO: only show package version
 disabled = false
 
 [erlang]
+# TODO: only show package version
 disabled = false
 
 [nodejs]
+# TODO: only show package version
 disabled = false
 
 [dotnet]
-disabled = false
+# TODO: only show package version
+disabled = true
 
 [python]
+# TODO: only show package version
 disabled = false
 
 [rust]
+# TODO: only show package version
 disabled = false
 
 [env_var]

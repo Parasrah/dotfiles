@@ -1,10 +1,19 @@
 # i3 config file (v4)
 
-# variables
+#---------------------------------------------------------------------#
+#                           @variables                                #
+#---------------------------------------------------------------------#
+
+# r_alt Mod3 (with my keyboard layout)
 # super Mod4
 set $alt Mod1
 set $mod Mod3
 set $super Mod4
+
+set $up    k
+set $down  j
+set $left  h
+set $right l
 
 set $ws1  "1:code"
 set $ws2  "2:web"
@@ -20,42 +29,44 @@ set $ws11 "11:social"
 set $ws12 "12:music"
 set $ws13 "13:term"
 
-set $up    k
-set $down  j
-set $left  h
-set $right l
+#---------------------------------------------------------------------#
+#                           @navigation                               #
+#---------------------------------------------------------------------#
 
-bindsym $mod+1         workspace --no-auto-back-and-forth $ws1
-bindsym $mod+2         workspace --no-auto-back-and-forth $ws2
-bindsym $mod+3         workspace --no-auto-back-and-forth $ws3
-bindsym $mod+4         workspace --no-auto-back-and-forth $ws4
-bindsym $mod+5         workspace --no-auto-back-and-forth $ws5
-bindsym $mod+6         workspace --no-auto-back-and-forth $ws6
-bindsym $mod+7         workspace --no-auto-back-and-forth $ws7
-bindsym $mod+8         workspace --no-auto-back-and-forth $ws8
-bindsym $mod+9         workspace --no-auto-back-and-forth $ws9
-bindsym $mod+0         workspace --no-auto-back-and-forth $ws10
-bindsym $mod+minus     workspace                          $ws11
-bindsym $mod+equal     workspace                          $ws12
-bindsym $mod+backslash workspace                          $ws13
+bindsym $mod+1                workspace --no-auto-back-and-forth $ws1
+bindsym $mod+2                workspace --no-auto-back-and-forth $ws2
+bindsym $mod+3                workspace --no-auto-back-and-forth $ws3
+bindsym $mod+4                workspace --no-auto-back-and-forth $ws4
+bindsym $mod+5                workspace --no-auto-back-and-forth $ws5
+bindsym $mod+6                workspace --no-auto-back-and-forth $ws6
+bindsym $mod+7                workspace --no-auto-back-and-forth $ws7
+bindsym $mod+8                workspace --no-auto-back-and-forth $ws8
+bindsym $mod+9                workspace --no-auto-back-and-forth $ws9
+bindsym $mod+0                workspace --no-auto-back-and-forth $ws10
+bindsym $mod+minus            workspace                          $ws11
+bindsym $mod+equal            workspace                          $ws12
+bindsym $mod+backslash        workspace                          $ws13
 
-# move focused container to workspace
-bindsym $mod+Shift+1     move container to workspace $ws1
-bindsym $mod+Shift+2     move container to workspace $ws2
-bindsym $mod+Shift+3     move container to workspace $ws3
-bindsym $mod+Shift+4     move container to workspace $ws4
-bindsym $mod+Shift+5     move container to workspace $ws5
-bindsym $mod+Shift+6     move container to workspace $ws6
-bindsym $mod+Shift+7     move container to workspace $ws7
-bindsym $mod+Shift+8     move container to workspace $ws8
-bindsym $mod+Shift+9     move container to workspace $ws9
-bindsym $mod+Shift+0     move container to workspace $ws10
-bindsym $mod+Shift+minus move container to workspace $ws11
-bindsym $mod+Shift+equal move container to workspace $ws12
+bindsym $mod+Shift+1          move container to workspace        $ws1
+bindsym $mod+Shift+2          move container to workspace        $ws2
+bindsym $mod+Shift+3          move container to workspace        $ws3
+bindsym $mod+Shift+4          move container to workspace        $ws4
+bindsym $mod+Shift+5          move container to workspace        $ws5
+bindsym $mod+Shift+6          move container to workspace        $ws6
+bindsym $mod+Shift+7          move container to workspace        $ws7
+bindsym $mod+Shift+8          move container to workspace        $ws8
+bindsym $mod+Shift+9          move container to workspace        $ws9
+bindsym $mod+Shift+0          move container to workspace        $ws10
+bindsym $mod+Shift+minus      move container to workspace        $ws11
+bindsym $mod+Shift+equal      move container to workspace        $ws12
 
-# workspace assignment
+#---------------------------------------------------------------------#
+#                           @assignment                               #
+#---------------------------------------------------------------------#
+
 assign [class="Brave"]                                            → $ws2
 assign [class="azuredatastudio"]                                  → $ws3
+assign [class="webdev-browser"]                                   → $ws4
 assign [class="Chromium"]                                         → $ws4
 assign [class="chrome"]                                           → $ws4
 assign [class="Firefox"]                                          → $ws4
@@ -68,76 +79,40 @@ assign [class="TelegramDesktop"]                                  → $ws11
 assign [class="discord"]                                          → $ws11
 assign [class="__scratchpad"]                                     → $ws13
 # https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/m-p/1315693#M153640
-# assign [class="Spotify"] → $ws12
-for_window [class="Spotify"] move to workspace $ws12
+for_window [class="Spotify"] move to workspace                      $ws12
 
-# floating
-for_window [title="Microsoft Teams Notification"] floating enable
-
-# 'scratch'
-set $scratchpad_kitty kitty --class=__scratchpad --listen-on=unix:@kitty-scratch-{kitty_pid}
-
-# backup in case format messed up
-bindsym $super+BackSpace exec fix-keyboard
+#---------------------------------------------------------------------#
+#                              @misc                                  #
+#---------------------------------------------------------------------#
 
 # use mouse+$mod to drag floating windows
 floating_modifier $mod
 
-# launch programs
-bindsym $mod+Return exec "kitty"
-bindsym $super+Return exec "kitty"
-bindsym $super+2 exec "brave-browser"
-bindsym $super+4 exec "chromium-browser"
-bindsym $super+9 exec "steam"
-bindsym $super+backslash exec --no-startup-id $scratchpad_kitty
+# special "scratch" instances of kitty
+set $scratchpad_kitty kitty --class=__scratchpad --listen-on=unix:@kitty-scratch-{kitty_pid}
 
 # fonts
-font pango:Noto Sans Regular 10
-
-# volume controls
-bindsym XF86AudioRaiseVolume exec --no-startup-id pulseaudio-ctl up
-bindsym XF86AudioLowerVolume exec --no-startup-id pulseaudio-ctl down
-bindsym XF86AudioMute        exec --no-startup-id pulseaudio-ctl mute
-bindsym XF86AudioMicMute     exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# screen brightness controls
-bindsym XF86MonBrightnessUp   exec xbacklight -inc 10
-bindsym XF86MonBrightnessDown exec xbacklight -dec 10
-
-# media player controls
-bindsym XF86AudioPlay  exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext  exec playerctl next
-bindsym XF86AudioPrev  exec playerctl previous
+font pango:Rec Mono Casual 10
 
 # workspace config
 workspace_layout default
 workspace_auto_back_and_forth yes
+
+# title padding
+title_align center
+
+# prevent focus from wrapping window
+focus_wrapping no
 
 # # gaps
 # for_window [class=".*"] border pixel 0
 # gaps outer 0
 # gaps inner 15
 
-# title padding
-title_align center
+#---------------------------------------------------------------------#
+#                              @modes                                 #
+#---------------------------------------------------------------------#
 
-# kill window
-bindsym $mod+Shift+q kill
-
-# application picker
-bindsym $mod+d exec "$HOME/.config/rofi/launcher.sh"
-
-# screenshots
-bindsym Print exec "flameshot gui"
-
-# reload config
-bindsym $mod+Shift+c reload
-
-# restart i3
-bindsym $mod+Shift+r restart
-
-# system state
 mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown" {
   bindsym l mode default, exec $HOME/.config/i3/lock
   bindsym Shift+l exec i3-msg exit
@@ -146,59 +121,6 @@ mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown" {
   bindsym Escape mode "default"
   bindsym Control+bracketleft mode "default"
 }
-
-bindsym $mod+Shift+e mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown"
-
-# change focus
-bindsym $mod+$left  focus left
-bindsym $mod+$down  focus down
-bindsym $mod+$up    focus up
-bindsym $mod+$right focus right
-
-# prevent focus from wrapping window
-focus_wrapping no
-
-# move focused window
-bindsym $mod+Shift+$left  move left
-bindsym $mod+Shift+$down  move down
-bindsym $mod+Shift+$up    move up
-bindsym $mod+Shift+$right move right
-
-# split in horizontal orientation
-bindsym $mod+x split h
-
-# split in vertical orientation
-bindsym $mod+v split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
-bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
-
-# toggle sticky
-bindsym $mod+Shift+s sticky toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space focus mode_toggle
-
-bindsym $mod+a focus parent
-bindsym $mod+c focus child
-
-# move to next/prev workspace
-bindsym $mod+bracketleft  workspace prev
-bindsym $mod+bracketright workspace next
-
-# dunst
-bindsym $super+space       exec "dunstctl close"
-bindsym $super+Shift+space exec "dunstctl close-all"
-bindsym $super+comma       exec "dunstctl history-pop"
-bindsym $super+period      exec "dunstctl context"
 
 mode "resize" {
         bindsym $left  resize shrink width  10 px or 10 ppt
@@ -212,6 +134,108 @@ mode "resize" {
         bindsym $mod+r              mode "default"
 }
 
+#---------------------------------------------------------------------#
+#                           @keybindings                              #
+#---------------------------------------------------------------------#
+
+# backup in case format messed up
+bindsym $super+BackSpace      exec fix-keyboard
+
+# launch programs
+bindsym $mod+Return           exec "kitty"
+bindsym $super+Return         exec "kitty"
+bindsym $super+2              exec "brave-browser"
+bindsym $super+4              exec "chromium-browser"
+bindsym $super+9              exec "steam"
+bindsym $super+backslash      exec --no-startup-id $scratchpad_kitty
+
+# volume controls
+bindsym XF86AudioRaiseVolume  exec --no-startup-id pulseaudio-ctl up
+bindsym XF86AudioLowerVolume  exec --no-startup-id pulseaudio-ctl down
+bindsym XF86AudioMute         exec --no-startup-id pulseaudio-ctl mute
+bindsym XF86AudioMicMute      exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+# screen brightness controls
+bindsym XF86MonBrightnessUp   exec xbacklight -inc 10
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+
+# media player controls
+bindsym XF86AudioPlay         exec playerctl play-pause
+bindsym XF86AudioPause        exec playerctl play-pause
+bindsym XF86AudioNext         exec playerctl next
+bindsym XF86AudioPrev         exec playerctl previous
+
+# kill window
+bindsym $mod+Shift+q          kill
+
+# application picker
+bindsym $mod+d                exec "$HOME/.config/rofi/launcher.sh"
+
+# screenshots
+bindsym Print                 exec "flameshot gui"
+
+# reload config
+bindsym $mod+Shift+c          reload
+
+# restart i3
+bindsym $mod+Shift+r          restart
+
+# change focus
+bindsym $mod+$left            focus left
+bindsym $mod+$down            focus down
+bindsym $mod+$up              focus up
+bindsym $mod+$right           focus right
+
+# move focused window
+bindsym $mod+Shift+$left      move left
+bindsym $mod+Shift+$down      move down
+bindsym $mod+Shift+$up        move up
+bindsym $mod+Shift+$right     move right
+
+# split in horizontal orientation
+bindsym $mod+x                split h
+
+# split in vertical orientation
+bindsym $mod+v                split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f                fullscreen toggle
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s                layout stacking
+bindsym $mod+t                layout tabbed
+bindsym $mod+e                layout toggle split
+
+# toggle tiling / floating
+bindsym $mod+Shift+space      floating toggle
+
+# toggle sticky
+bindsym $mod+Shift+s          sticky toggle
+
+# change focus between tiling / floating windows
+bindsym $mod+space            focus mode_toggle
+
+bindsym $mod+a                focus parent
+bindsym $mod+c                focus child
+
+# move to next/prev workspace
+bindsym $mod+bracketleft      workspace prev
+bindsym $mod+bracketright     workspace next
+
+# dunst
+bindsym $super+space          exec "dunstctl close"
+bindsym $super+Shift+space    exec "dunstctl close-all"
+bindsym $super+comma          exec "dunstctl history-pop"
+bindsym $super+period         exec "dunstctl context"
+
+# modes
+bindsym $mod+Shift+e          mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown"
+bindsym $mod+r                mode "resize"
+
+#---------------------------------------------------------------------#
+#                             @colors                                 #
+#---------------------------------------------------------------------#
+
 # colors
 # class                 border  backgr. text    indicator child_border
 client.focused          #212121 #212121 #ffffff #616161   #212121
@@ -222,9 +246,10 @@ client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 
 client.background       #000000
 
-bindsym $mod+r mode "resize"
+#---------------------------------------------------------------------#
+#                             @startup                                #
+#---------------------------------------------------------------------#
 
-# startup
 exec        --no-startup-id flameshot
 exec        --no-startup-id i3-msg workspace $ws1
 exec        --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/.config/i3/lock --nofork
