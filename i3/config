@@ -64,6 +64,7 @@ assign [class="Evolution"]                                        → $ws8
 assign [class="Steam"]                                            → $ws9
 assign [class="Teams" title="^(?!Microsoft Teams Notification$)"] → $ws11
 assign [class="Signal"]                                           → $ws11
+assign [class="TelegramDesktop"]                                  → $ws11
 assign [class="discord"]                                          → $ws11
 assign [class="__scratchpad"]                                     → $ws13
 # https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/m-p/1315693#M153640
