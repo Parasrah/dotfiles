@@ -73,7 +73,7 @@ disabled = false
 [env_var]
 disabled = true
 
-[memory]
+[memory_usage]
 disabled = true
 
 [time]
