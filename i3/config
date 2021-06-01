@@ -75,6 +75,7 @@ assign [class="Evolution"]                                        → $ws8
 assign [class="Steam"]                                            → $ws9
 assign [class="Teams" title="^(?!Microsoft Teams Notification$)"] → $ws11
 assign [class="Signal"]                                           → $ws11
+assign [class="Slack"]                                            → $ws11
 assign [class="TelegramDesktop"]                                  → $ws11
 assign [class="discord"]                                          → $ws11
 assign [class="__scratchpad"]                                     → $ws13
@@ -253,6 +254,5 @@ client.background       #000000
 exec        --no-startup-id flameshot
 exec        --no-startup-id i3-msg workspace $ws1
 exec        --no-startup-id xss-lock --transfer-sleep-lock -- $HOME/.config/i3/lock --nofork
-exec        --no-startup-id dunst
 
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
