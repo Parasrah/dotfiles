@@ -125,8 +125,8 @@ mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown" {
 
 mode "resize" {
         bindsym $left  resize shrink width  10 px or 10 ppt
-        bindsym $down  resize grow   height 10 px or 10 ppt
-        bindsym $up    resize shrink height 10 px or 10 ppt
+        bindsym $down  resize shrink height 10 px or 10 ppt
+        bindsym $up    resize grow   height 10 px or 10 ppt
         bindsym $right resize grow   width  10 px or 10 ppt
 
         bindsym Return              mode "default"
