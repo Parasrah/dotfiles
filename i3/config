@@ -7,8 +7,7 @@
 # r_alt Mod3 (with my keyboard layout)
 # super Mod4
 set $alt Mod1
-set $mod Mod3
-set $super Mod4
+set $mod Mod4
 
 set $up    k
 set $down  j
@@ -140,15 +139,10 @@ mode "resize" {
 #---------------------------------------------------------------------#
 
 # backup in case format messed up
-bindsym $super+BackSpace      exec fix-keyboard
+bindsym $mod+BackSpace        exec fix-keyboard
 
 # launch programs
-bindsym $mod+Return           exec "kitty"
-bindsym $super+Return         exec "kitty"
-bindsym $super+2              exec "brave-browser"
-bindsym $super+4              exec "chromium-browser"
-bindsym $super+9              exec "steam"
-bindsym $super+backslash      exec --no-startup-id $scratchpad_kitty
+bindsym $mod+semicolon        exec "kitty"
 
 # volume controls
 bindsym XF86AudioRaiseVolume  exec --no-startup-id pulseaudio-ctl up
@@ -224,10 +218,10 @@ bindsym $mod+bracketleft      workspace prev
 bindsym $mod+bracketright     workspace next
 
 # dunst
-bindsym $super+space          exec "dunstctl close"
-bindsym $super+Shift+space    exec "dunstctl close-all"
-bindsym $super+comma          exec "dunstctl history-pop"
-bindsym $super+period         exec "dunstctl context"
+# bindsym $mod+space          exec "dunstctl close"
+# bindsym $mod+Shift+space    exec "dunstctl close-all"
+# bindsym $mod+comma          exec "dunstctl history-pop"
+# bindsym $mod+period         exec "dunstctl context"
 
 # modes
 bindsym $mod+Shift+e          mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown"

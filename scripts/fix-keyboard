@@ -1,12 +1,3 @@
 #!/usr/bin/env sh
 
-layout="$1"
-if [ -z "$layout" ]; then
-    layout="$DOTFILES/layout.xkb"
-fi
-if [ -z "$layout" ]; then
-    >&2 echo "must either pass in path to layout or set DOTFILES"
-fi
-
 xset r rate 250 20
-test -f "$layout" && xkbcomp "$layout" "$DISPLAY"
