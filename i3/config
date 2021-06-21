@@ -9,10 +9,10 @@
 set $alt Mod1
 set $mod Mod4
 
-set $up    k
-set $down  j
-set $left  h
-set $right l
+set $up    e
+set $down  d
+set $left  s
+set $right f
 
 set $ws1  "1:code"
 set $ws2  "2:web"
@@ -113,36 +113,74 @@ focus_wrapping no
 #                              @modes                                 #
 #---------------------------------------------------------------------#
 
-mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown" {
-  bindsym l mode default, exec $HOME/.config/i3/lock
-  bindsym Shift+l exec i3-msg exit
-  bindsym r exec reboot
-  bindsym s exec shutdown now
-  bindsym Escape mode "default"
-  bindsym Control+bracketleft mode "default"
+set $exit_mode      "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown"
+set $resize_mode    "resize"
+set $layout_mode    "layout: [t]abbed, [s]plit, [S]tacked"
+set $config_mode    "config: [r]eload, [R]estart"
+set $window_mode    "window: [˽]fullscreen, [f]loat, [t]ile, [s]ticky, [F]loat focus, [T]ile focus"
+
+bindsym $mod+Shift+b mode $exit_mode
+bindsym $mod+Shift+r mode $resize_mode
+bindsym $mod+l       mode $layout_mode
+bindsym $mod+Shift+c mode $config_mode
+bindsym $mod+Shift+w mode $window_mode
+
+mode $exit_mode {
+    bindsym l       mode default, exec $HOME/.config/i3/lock
+    bindsym Shift+l exec i3-msg exit
+    bindsym r       exec reboot
+    bindsym s       exec shutdown now
+
+    bindsym Escape mode default
+    bindsym Control+bracketleft mode default
 }
 
-mode "resize" {
-        bindsym $left  resize shrink width  10 px or 10 ppt
-        bindsym $down  resize shrink height 10 px or 10 ppt
-        bindsym $up    resize grow   height 10 px or 10 ppt
-        bindsym $right resize grow   width  10 px or 10 ppt
+mode $resize_mode {
+    bindsym $left  resize shrink width  10 px or 10 ppt
+    bindsym $down  resize shrink height 10 px or 10 ppt
+    bindsym $up    resize grow   height 10 px or 10 ppt
+    bindsym $right resize grow   width  10 px or 10 ppt
 
-        bindsym Return              mode "default"
-        bindsym Escape              mode "default"
-        bindsym Control+bracketleft mode "default"
-        bindsym $mod+r              mode "default"
+    bindsym Escape              mode default
+    bindsym Control+bracketleft mode default
+    bindsym $mod+t              mode default
+}
+
+mode $layout_mode {
+    bindsym shift+s mode default; layout stacking
+    bindsym t       mode default; layout tabbed
+    bindsym s       mode default; layout toggle split
+
+    bindsym Escape              mode default
+    bindsym Control+bracketleft mode default
+}
+
+mode $config_mode {
+    bindsym r       mode default; reload
+    bindsym Shift+r mode default; restart
+
+    bindsym Escape              mode default
+    bindsym Control+bracketleft mode default
+}
+
+mode $window_mode {
+    bindsym space    mode default; fullscreen toggle
+    bindsym f        mode default; floating   enable
+    bindsym t        mode default; floating   disable
+    bindsym Shift+f  mode default; focus      floating
+    bindsym Shift+t  mode default; focus      tiling
+    bindsym s        mode default; sticky     toggle
+
+    bindsym Escape              mode default
+    bindsym Control+bracketleft mode default
 }
 
 #---------------------------------------------------------------------#
 #                           @keybindings                              #
 #---------------------------------------------------------------------#
 
-# backup in case format messed up
-bindsym $mod+BackSpace        exec fix-keyboard
-
 # launch programs
-bindsym $mod+Return        exec "kitty"
+bindsym $mod+Return           exec "kitty"
 
 # volume controls
 bindsym XF86AudioRaiseVolume  exec --no-startup-id pulseaudio-ctl up
@@ -164,16 +202,10 @@ bindsym XF86AudioPrev         exec playerctl previous
 bindsym $mod+Shift+q          kill
 
 # application picker
-bindsym $mod+d                exec "$HOME/.config/rofi/launcher.sh"
+bindsym $mod+x                exec "$HOME/.config/rofi/launcher.sh"
 
 # screenshots
 bindsym Print                 exec "flameshot gui"
-
-# reload config
-bindsym $mod+Shift+c          reload
-
-# restart i3
-bindsym $mod+Shift+r          restart
 
 # change focus
 bindsym $mod+$left            focus left
@@ -187,31 +219,10 @@ bindsym $mod+Shift+$down      move down
 bindsym $mod+Shift+$up        move up
 bindsym $mod+Shift+$right     move right
 
-# split in horizontal orientation
-bindsym $mod+x                split h
-
-# split in vertical orientation
-bindsym $mod+v                split v
-
-# enter fullscreen mode for the focused container
-bindsym $mod+f                fullscreen toggle
-
-# change container layout (stacked, tabbed, toggle split)
-bindsym $mod+s                layout stacking
-bindsym $mod+t                layout tabbed
-bindsym $mod+e                layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space      floating toggle
-
-# toggle sticky
-bindsym $mod+Shift+s          sticky toggle
-
-# change focus between tiling / floating windows
-bindsym $mod+space            focus mode_toggle
-
-bindsym $mod+a                focus parent
-bindsym $mod+c                focus child
+bindsym $mod+g                split h
+bindsym $mod+c                split v
+bindsym $mod+r                focus parent
+bindsym $mod+w                focus child
 
 # move to next/prev workspace
 bindsym $mod+bracketleft      workspace prev
@@ -222,10 +233,6 @@ bindsym $mod+bracketright     workspace next
 # bindsym $mod+Shift+space    exec "dunstctl close-all"
 # bindsym $mod+comma          exec "dunstctl history-pop"
 # bindsym $mod+period         exec "dunstctl context"
-
-# modes
-bindsym $mod+Shift+e          mode "exit: [l]ock, [L]ogout, [r]eboot, [s]hutdown"
-bindsym $mod+r                mode "resize"
 
 #---------------------------------------------------------------------#
 #                             @colors                                 #
