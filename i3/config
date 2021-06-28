@@ -143,11 +143,10 @@ mode $resize_mode {
 
     bindsym Escape              mode default
     bindsym Control+bracketleft mode default
-    bindsym $mod+t              mode default
 }
 
 mode $layout_mode {
-    bindsym shift+s mode default; layout stacking
+    bindsym Shift+s mode default; layout stacking
     bindsym t       mode default; layout tabbed
     bindsym s       mode default; layout toggle split
 
@@ -206,6 +205,9 @@ bindsym $mod+x                exec "$HOME/.config/rofi/launcher.sh"
 
 # screenshots
 bindsym Print                 exec "flameshot gui"
+
+# fullscreen
+bindsym $mod+a                fullscreen toggle
 
 # change focus
 bindsym $mod+$left            focus left
