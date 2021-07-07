@@ -1,6 +1,23 @@
 #!/usr/bin/env bash
 
-for session in $(lsof -U 2>/dev/null | rg "@kitty-scratch-[a-zA-Z0-9]+" -o);
+function usage() { echo "Usage: $0 [-s <session>] <command>" 2>&1; exit 1; }
+
+while getopts ":s:" opt; do
+    case "$opt" in
+        s)
+            session="$OPTARG"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+filter=${session:-'.*'}
+
+for session in $(lsof -U 2>/dev/null | rg "@kitty-scratch-[a-zA-Z0-9\-_]+" -o | rg "$filter");
 do
     # get pid of primary process
     pid="$(kitty @ --to="unix:${session}" ls | jq -r '.[0] | .tabs | .[0] | .windows | .[0] | .foreground_processes | .[0] | .pid' 2>/dev/null)"

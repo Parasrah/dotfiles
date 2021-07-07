@@ -1,8 +1,23 @@
-#!/usr/bin/env dash
+#!/usr/bin/env bash
 
-cmd="$@"
+function usage() { echo "Usage: $0 [-s <session>] <command>" 2>&1; exit 1; }
 
-for session in $(lsof -U 2>/dev/null | rg "@kitty-scratch-[a-zA-Z0-9]+" -o);
+while getopts ":s:" opt; do
+    case "$opt" in
+        s)
+            session="$OPTARG"
+            ;;
+        *)
+            usage
+            ;;
+    esac
+done
+
+shift $((OPTIND-1))
+
+filter=${session:-'.*'}
+
+for session in $(lsof -U 2>/dev/null | rg "@kitty-scratch-[a-zA-Z0-9\-_]+" -o | rg "$filter");
 do
     echo "$@" | kitty @ --to="unix:${session}" send-text --stdin
 done
