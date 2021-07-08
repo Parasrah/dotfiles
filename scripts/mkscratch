@@ -6,7 +6,7 @@ curr="$KITTY_LISTEN_ON"
 for dir in $dirs;
 do
     listen_on="unix:@kitty-scratch-${dir}"
-    kitty --detach --class=__scratchpad --listen-on="$listen_on"
+    kitty --detach --class=__scratchpad --listen-on="$listen_on" --title="$dir"
     echo "spawned new scratch: ${listen_on}"
     #TODO: rg instead
     sleep 0.3
