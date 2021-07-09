@@ -1,4 +1,37 @@
 add_newline = false
+format = """
+$username\
+$hostname\
+$shlvl\
+$kubernetes\
+$directory\
+$vcsh\
+$git_branch\
+$git_commit\
+$git_state\
+$git_status\
+$hg_branch\
+$docker_context\
+$package\
+$cmake\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$golang\
+$nodejs\
+$python\
+$rust\
+$terraform\
+$custom\
+$nix_shell\
+$line_break\
+$jobs\
+$time\
+$status\
+$shell\
+$character"""
 
 [character]
 # defaults: ❯ ❮
@@ -40,11 +73,16 @@ disabled = false
 
 [nix_shell]
 disabled = false
-symbol = "❄️ "
+symbol = "❄️"
+format = '[$symbol]($style)'
 
 [elm]
 # TODO: only show package version
 disabled = false
+
+[rust]
+disabled = false
+symbol = "  "
 
 [elixir]
 # TODO: only show package version
@@ -55,83 +93,12 @@ disabled = false
 disabled = false
 
 [nodejs]
-# TODO: only show package version
 disabled = false
-
-[dotnet]
-# TODO: only show package version
-disabled = true
+symbol = " "
 
 [python]
-# TODO: only show package version
 disabled = false
-
-[rust]
-# TODO: only show package version
-disabled = false
-
-[env_var]
-disabled = true
-
-[memory_usage]
-disabled = true
-
-[time]
-disabled = true
-
-[singularity]
-disabled = true
-
-[terraform]
-disabled = true
-
-[hg_branch]
-disabled = true
-
-[docker_context]
-disabled = true
-
-[kubernetes]
-disabled = true
-
-[ruby]
-disabled = true
-
-[nim]
-disabled = true
-
-[golang]
-disabled = true
-
-[java]
-disabled = true
-
-[aws]
-disabled = true
-
-[battery]
-disabled = true
-
-[conda]
-disabled = true
-
-[crystal]
-disabled = true
-
-[julia]
-disabled = true
-
-[ocaml]
-disabled = true
-
-[php]
-disabled = true
-
-[zig]
-disabled = true
-
-[cmd_duration]
-disabled = true
+symbol = " "
 
 [custom.kakoune]
 symbol = '🐈'
@@ -140,4 +107,4 @@ when = 'kcr prompt'
 shell = ['sh']
 description = 'The current Kakoune session and client'
 style = 'green'
-format = '[$symbol $output]($style)'
+format = '[$output]($style) '
