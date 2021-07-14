@@ -9,7 +9,7 @@ do
     kitty --detach --class=__scratchpad --listen-on="$listen_on" --title="$dir"
     echo "spawned new scratch: ${listen_on}"
     #TODO: rg instead
-    sleep 0.3
+    sleep 0.4
     echo "z ${dir}" | kitty @ --to="$listen_on" send-text --stdin
 done
 

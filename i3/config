@@ -64,20 +64,19 @@ bindsym $mod+Shift+backslash  move container to workspace        $ws13
 #                           @assignment                               #
 #---------------------------------------------------------------------#
 
-assign [class="Brave"]                                            → $ws2
-assign [class="azuredatastudio"]                                  → $ws3
-assign [class="webdev-browser"]                                   → $ws4
-assign [class="Chromium"]                                         → $ws4
-assign [class="chrome"]                                           → $ws4
-assign [class="Firefox"]                                          → $ws4
-assign [class="code"]                                             → $ws5
-assign [class="Steam"]                                            → $ws9
-assign [class="cryptee"]                                          → $ws10
-assign [class="Signal"]                                           → $ws11
-assign [class="Slack"]                                            → $ws11
-assign [class="TelegramDesktop"]                                  → $ws11
-assign [class="discord"]                                          → $ws11
-assign [class="__scratchpad"]                                     → $ws13
+assign [class="Brave" tiling]                                     → $ws2
+assign [class="webdev-browser" tiling]                            → $ws4
+assign [class="Chromium" tiling]                                  → $ws4
+assign [class="chrome" tiling]                                    → $ws4
+assign [class="Firefox" tiling]                                   → $ws4
+assign [class="code" tiling]                                      → $ws5
+assign [class="Steam" tiling]                                     → $ws9
+assign [class="cryptee" tiling]                                   → $ws10
+assign [class="Signal" tiling]                                    → $ws11
+assign [class="Slack" tiling]                                     → $ws11
+assign [class="TelegramDesktop" tiling]                           → $ws11
+assign [class="discord" tiling]                                   → $ws11
+assign [class="__scratchpad" tiling]                              → $ws13
 # https://community.spotify.com/t5/Desktop-Linux/WM-CLASS-window-property-on-Linux/m-p/1315693#M153640
 for_window [class="Spotify"] move to workspace                      $ws12
 
